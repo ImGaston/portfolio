@@ -1,9 +1,9 @@
 <h1 align="center">Hi 👋, I'm Gastón Corbalán</h1>
 <h3 align="center">A passionate frontend developer from Argentina</h3>
 
-- 👨‍💻 All of my projects are available at [gastoncorbalan.com](gastoncorbalan.com)
+- 👨‍💻 All of my projects are available at [gastoncorbalan](https://gastoncorbalan.com)
 
-- 📝 I regularly write articles on [notes.gastoncorbalan.com](notes.gastoncorbalan.com)
+- 📝 I regularly write articles on [notes.gastoncorbalan](https://notes.gastoncorbalan.com)
 
 - 💬 Ask me about **React, Nextjs, Node**
 
