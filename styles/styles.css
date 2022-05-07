@@ -1,3 +1,17 @@
+@media (prefers-color-scheme: light) {
+  body {
+      background-color: #e2e8f0;
+      color: #1a202c;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: #1a202c;
+      color: #e2e8f0;
+  }
+}
+
 body {
   font-family: 'Raleway','SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
     'Arial', sans-serif;
@@ -8,4 +22,15 @@ body {
 
 h1 {
     font-family: 'Quattrocento', Georgia, 'Times New Roman', Times, serif;
+    font-size: 3em;
 }
+
+p {
+    font-size: 20px;
+    line-height: 2em;
+}
+
+p span {
+    font-size: 28px;
+}
+
