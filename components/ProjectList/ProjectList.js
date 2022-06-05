@@ -1,10 +1,12 @@
 import React from 'react';
 import Image from 'next/image'
+import CardProject from '../CardProject/CardProject';
 
 const ProjectList = () => {
     return (
         <section className='projects'>
             <div className='cards'>
+                <div className='prueba'>prueba</div>
                 {/* <Image></Image> */}
                 <h3>1</h3>
                 <span></span>
@@ -24,6 +26,7 @@ const ProjectList = () => {
                 <h3>4</h3>
                 <span></span>
             </div>
+            <CardProject />
             <style jsx>{`
                 .projects {
                     display: flex;
@@ -32,9 +35,13 @@ const ProjectList = () => {
                 }
                 .cards {
                     width: 300px;
+                    height: 250px;
                     border: 1px dashed #000;
-                    padding: 1em;
-                    margin: 2px;
+                    padding: 1rem;
+                    background-color: #4C243B;
+                }
+                .prueba {
+                    background-color: #B84A62;
                 }
                 `}
             </style>
