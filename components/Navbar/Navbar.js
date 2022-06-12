@@ -1,33 +1,42 @@
 import React from 'react';
-import Image from 'next/image'
-import resumeIcon from '../../public/cv.svg'
+import * as icon from 'react-icons/io5';
 
 const Navbar = () => {
     return (
         <nav className='navbar'>
-            <a href='https://drive.google.com/file/d/1Dxg8jbDcKFodlWSdY9nKqXvR4a_zdNDe/view?usp=sharing' target='_blank' className='resumeLink' title="Download resume">
-            <Image
-                src={resumeIcon}
-                alt="resume" width="60" height="60" className='navbar-icon'/>
-            </a>
+            <ul className='navbar-list'>
+                <li className='navbar-icon'>
+                    <a href='https://drive.google.com/file/d/1Dxg8jbDcKFodlWSdY9nKqXvR4a_zdNDe/view?usp=sharing' target='_blank' className='resumeLink' title="Download resume">
+                    <icon.IoDocumentTextOutline />
+                    </a>
+                </li>
+            </ul>    
             <style jsx>{`
                 .navbar {
                     display: flex;
                     justify-content: flex-end;
                 }
+                .navbar-list {
+                    margin: 0px;
+                }
+                .navbar-icon {
+                    font-size: 60px;
+                    list-style: none;
+                }
                 .resumeLink {
                     padding-right: 4px;
                     padding-top: 4px; 
+                    text-decoration: none;
                 }
                 @media (prefers-color-scheme: light) {
-                    .navbar-icon {
-                        color: black;
+                    .resumeLink {
+                        color: #1a202c;
                     }
                     }
                 
                 @media (prefers-color-scheme: dark) {
-                    .navbar-icon {
-                        color: white;
+                    .resumeLink {
+                        color: #e2e8f0;
                     }
                     }
             `}</style>
