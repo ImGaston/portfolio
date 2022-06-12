@@ -1,8 +1,11 @@
 import React from 'react';
 import CardProject from '../CardProject/CardProject';
+import Data from '../../data/data';
 
 const ProjectList = () => {
     return (
+        <>
+        <h3>Projects</h3>
         <section className='projects'>
             <div className='cards'>
                 <h3>1</h3>
@@ -49,6 +52,7 @@ const ProjectList = () => {
                 `}
             </style>
         </section>
+        </>
     )
 }
 
