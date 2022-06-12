@@ -6,23 +6,18 @@ const ProjectList = () => {
     return (
         <section className='projects'>
             <div className='cards'>
-                <div className='prueba'>prueba</div>
-                {/* <Image></Image> */}
                 <h3>1</h3>
                 <span></span>
             </div>
             <div className='cards'>
-                {/* <Image></Image> */}
                 <h3>2</h3>
                 <span></span>
             </div>
             <div className='cards'>
-                {/* <Image></Image> */}
                 <h3>3</h3>
                 <span></span>
             </div>
             <div className='cards'>
-                {/* <Image></Image> */}
                 <h3>4</h3>
                 <span></span>
             </div>
@@ -34,14 +29,22 @@ const ProjectList = () => {
                     justify-content: center;
                 }
                 .cards {
-                    width: 300px;
+                    width: 250px;
                     height: 250px;
-                    border: 1px dashed #000;
-                    padding: 1rem;
-                    background-color: #4C243B;
+                    padding: 1.5rem;
+                    border: 5px solid #1a202c;
+                    border-radius: 50px;
+                    margin: 1px;
                 }
-                .prueba {
-                    background-color: #B84A62;
+                @media (prefers-color-scheme: light) {
+                    .cards {
+                        border: 5px solid #1a202c;
+                    }
+                }
+                @media (prefers-color-scheme: dark) {
+                    .cards {
+                        border: 5px solid #e2e8f0;
+                    }
                 }
                 `}
             </style>

@@ -37,7 +37,7 @@ const mapProjectsToCards = () =>
 const CardProject = () => {
     return (
         <section>
-            {mapProjectsToCards()}
+            {/* {mapProjectsToCards()} */}
         </section>
     )
 }
