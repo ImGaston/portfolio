@@ -1,14 +1,8 @@
 import * as icon  from 'react-icons/si'
 
-const social = [
-	{ icon: icon.SiGithub, link: 'https://github.com' },
-	{ icon: icon.SiCodepen, link: 'https://www.medium.com/' },
-	{ icon: icon.SiTwitter, link: 'https://www.twitter.com/' },
-	{ icon: icon.SiInstagram, link: 'https://www.instagram.com/' },
-];
-
 const work = [
 	{
+		id: 1,
 		name: 'Todo app',
 		description: 'Phasellus metus mi, scelerisque eu volutpat non, posuere et massa. Nunc hendrerit, augue non fringilla mattis.',
 		stack: [
@@ -21,6 +15,7 @@ const work = [
 		linkGithub: 'https://github.com',
 	},
 	{
+		id: 2,
 		name: 'Pokedex',
 		description: 'Etiam eget volutpat risus. Nam magna bibendum a metus dignissim, id eleifend libero luctus molestie eget.',
 		stack: [
@@ -33,6 +28,7 @@ const work = [
 		linkGithub: 'https://github.com',
 	},
 	{
+		id: 3,
 		name: 'E-Commerce',
 		description: 'Nullam id mauris auctor, sollicitudin sapien id, sagittis turpis proin et nunc sempe, venenatis erat.',
 		stack: [
@@ -45,6 +41,7 @@ const work = [
 		linkGithub: 'https://github.com',
 	},
 	{
+		id: 4,
 		name: 'Twitter clon',
 		description: 'Cras leo mauris, gravida vel lectus ac, congue luctus odio. Sed varius varius est eget convallis sagittis sit amet.',
 		stack: [
@@ -58,18 +55,4 @@ const work = [
 	},
 ]
 
-const stack = [
-	{
-		name: 'Front End',
-		items: [
-			{ icon: icon.SiHtml5, name: 'HTML' },
-			{ icon: icon.SiCss3, name: 'CSS' },
-			{ icon: icon.SiBootstrap, name: 'Bootstrap', },
-			{ icon: icon.SiJavascript, name: 'Javascript' },
-			{ icon: icon.SiTypescript, name: 'Typescript' },
-			{ icon: icon.SiReact, name: 'React', },
-		],
-	},
-]
-
-export { social, work, stack }
+export default work;
