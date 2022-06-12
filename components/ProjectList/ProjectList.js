@@ -24,13 +24,14 @@ const ProjectList = () => {
             <CardProject />
             <style jsx>{`
                 .projects {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill,minmax(min(400px,100%),1fr));
+                    justify-items: center;
+                    gap: 60px;
                 }
                 .cards {
-                    width: 250px;
-                    height: 250px;
+                    width: 86%;
+                    height: 320px;
                     padding: 1.5rem;
                     border: 5px solid #1a202c;
                     border-radius: 50px;

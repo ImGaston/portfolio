@@ -5,11 +5,11 @@ import Footer from '../Footer/Footer.js'
 
 const Layout = ({ children }) => {
     return (
-        <div>
+        <>
             <Navbar />
             {children}
             <Footer />
-        </div>
+        </>
     )
 }
 
