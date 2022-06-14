@@ -7,22 +7,6 @@ const ProjectList = () => {
         <>
         <h3>Projects</h3>
         <section className='projects'>
-            <div className='cards'>
-                <h3>1</h3>
-                <span></span>
-            </div>
-            <div className='cards'>
-                <h3>2</h3>
-                <span></span>
-            </div>
-            <div className='cards'>
-                <h3>3</h3>
-                <span></span>
-            </div>
-            <div className='cards'>
-                <h3>4</h3>
-                <span></span>
-            </div>
             <CardProject />
             <style jsx>{`
                 .projects {
