@@ -68,7 +68,7 @@ const mapProjectsToCards = () =>
                 .Card-link-project{
                     display: inline-block;
                     position: relative;
-                    font-size: 16px;
+                    font-size: 20px;
                     font-weight: bold;
                     overflow: hidden;
                 }
@@ -83,9 +83,8 @@ const mapProjectsToCards = () =>
                 .Card-link-project:hover::before{
                     transform: translateX(-100%);
                 }
-                .Card-icon-arrow {
-                    font-size: 1.4rem;
-                    transform: rotate(-45deg);
+                .Card-link-github {
+                    font-size: 20px;
                 }
                 @media (prefers-color-scheme: light) {
                     .cards {
@@ -97,7 +96,6 @@ const mapProjectsToCards = () =>
                     .Card-link-project::before {
                         background-color: #1a202c;
                     }
-
                 }
                 @media (prefers-color-scheme: dark) {
                     .cards {
