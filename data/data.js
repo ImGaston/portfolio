@@ -29,7 +29,7 @@ const work = [
 	},
 	{
 		id: 3,
-		name: 'Facundo Campazzo Stats',
+		name: 'Pharmacys on duty',
 		description: 'A card player stats using info from an NBA API.',
 		stack: [
 			{ icon: icon.SiHtml5, name: 'HTML' },
@@ -37,8 +37,8 @@ const work = [
 			{ icon: icon.SiJavascript, name: 'Javascript' },
 			{ icon: icon.SiReact, name: 'ReactJS' },
 		],
-		linkProject: 'https://example.com',
-		linkGithub: 'https://github.com/ImGaston',
+		linkProject: 'https://farmacias.gastoncorbalan.com',
+		linkGithub: 'https://github.com/ImGaston/farmacias-de-turno',
 	},
 	{
 		id: 4,
