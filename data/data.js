@@ -30,7 +30,7 @@ const work = [
 	{
 		id: 3,
 		name: 'Pharmacys on duty',
-		description: 'A card player stats using info from an NBA API.',
+		description: 'A solution to know which pharmacy is open.',
 		stack: [
 			{ icon: icon.SiHtml5, name: 'HTML' },
 			{ icon: icon.SiCss3, name: 'CSS' },
