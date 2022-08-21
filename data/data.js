@@ -2,9 +2,9 @@ import * as icon  from 'react-icons/si'
 
 const work = [
 	{
-		id: 1,
+		id: '1',
 		name: 'Todo app',
-		description: `A simple To-do app cause, am I really a junior dev if I don't have one?.`,
+		description: `A simple, must-do, To-do app. Am I really a junior developer if I don't have one?.`,
 		stack: [
 			{ icon: icon.SiHtml5, name: 'HTML' },
 			{ icon: icon.SiCss3, name: 'CSS' },
@@ -15,7 +15,7 @@ const work = [
 		linkGithub: 'https://github.com/ImGaston/to-do-list',
 	},
 	{
-		id: 2,
+		id: '2',
 		name: 'Quote-generator',
 		description: 'Random quote generator from Leo Piccioli Linkedin articles.',
 		stack: [
@@ -28,9 +28,9 @@ const work = [
 		linkGithub: 'https://github.com/ImGaston/quote-generator',
 	},
 	{
-		id: 3,
+		id: '3',
 		name: 'Pharmacys on duty',
-		description: 'A solution to know which pharmacy is open.',
+		description: 'A solution to know which pharmacy is open in my hometown.',
 		stack: [
 			{ icon: icon.SiHtml5, name: 'HTML' },
 			{ icon: icon.SiCss3, name: 'CSS' },
@@ -41,7 +41,7 @@ const work = [
 		linkGithub: 'https://github.com/ImGaston/farmacias-de-turno',
 	},
 	{
-		id: 4,
+		id: '4',
 		name: 'Cards play note',
 		description: 'A solution to an argentian game called Truco.',
 		stack: [
