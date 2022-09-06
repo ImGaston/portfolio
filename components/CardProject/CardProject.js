@@ -82,10 +82,12 @@ const mapProjectsToCards = () =>
                     .button:hover {
                         box-shadow: inset 100px 0 0 0 #f07d1b;
                         background-color: #f07d1b;
+                        color: #e2e8f0;
                     }
                     .Card-link-project:hover {
-                        color: #003d3d;
                         font-weight: 700;
+                        color: #e2e8f0;
+                        transition: 0.6s ease;
                     }
                     .Card-icon-github {
                         font-size: 22px;
@@ -115,11 +117,17 @@ const mapProjectsToCards = () =>
                         a {
                             color: #e2e8f0;
                         }
+                        .Card-link-project {
+                            color: #003d3d;
+                        }
+                        .Card-link-project:hover {
+                            color: #e2e8f0;
+                        }
                         .Card-link-project::before {
                             background-color: #f07d1b;
                         }
                         .Card-link-github:hover {
-                            color: #003d3d;
+                            color: #f07d1b;
                             transition: 0.6s ease;
                         }
                     }
