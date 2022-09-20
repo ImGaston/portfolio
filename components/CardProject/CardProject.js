@@ -67,6 +67,7 @@ const mapProjectsToCards = () =>
                         overflow: hidden;
                     }
                     .button {
+                        background-color: #e2e8f0;
                         width: fit-content;
                         min-width: 200px;
                         height: 50px;
