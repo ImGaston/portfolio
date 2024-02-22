@@ -1,14 +1,14 @@
 @media (prefers-color-scheme: light) {
   body {
-      background-color: #e2e8f0;
-      color: #003D3D;
+      background-color: #FFFFFF;
+      color: #121212;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-      background-color: #003D3D;
-      color: #e2e8f0;
+      background-color: #121212;
+      color: #FFFFFF;
   }
 }
 
