@@ -24,6 +24,7 @@ h1 {
     font-family: 'Quattrocento', Georgia, 'Times New Roman', Times, serif;
     font-size: 3em;
     margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 h3 {
@@ -32,15 +33,21 @@ h3 {
 }
 
 p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 2em;
+    margin-top: 0px;
+    margin-bottom: 8px;
 }
 
-p span {
-    font-size: 28px;
+.subtitle {
+  font-size: 16px;
 }
 
 a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
+}
+
+a span:hover {
+  text-decoration: underline;
 }

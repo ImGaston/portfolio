@@ -9,17 +9,23 @@ const Home = () => {
     <main>
       <div className='first-view'>
         <h1>Gastón Corbalán</h1>
+        <p className='subtitle'>STR Revenue Management and Pricing strategies</p>
       </div>
-      <div>
+      <p>
         <a target='_blank' href='https://notes.gastoncorbalan.com/'>
-          Notes
+          🔗 <span>Notes</span>
         </a>
-      </div>
-      <div>
+      </p>
+      <p>
         <a target='_blank' href='https://cv.gastoncorbalan.com/'>
-          CV
+          🔗 <span>CV</span>
         </a>
-      </div>
+      </p>
+      <p>
+        <a href='mailto: hola@gastoncorbalan.com'>
+          ✉️ <span>Contact</span>
+        </a>
+      </p>
     </main>
   );
 };
