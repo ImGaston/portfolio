@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Gaston Corbalan's portfolio",
+  "description": "Gaston Corbalan's portfolionpm u`date",
   "main": "index.js",
   "scripts": {
     "dev": "next",

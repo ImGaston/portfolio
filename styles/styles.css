@@ -45,9 +45,11 @@ p {
 
 a {
   color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  text-decoration: underline; /* no underline */
 }
 
 a span:hover {
-  text-decoration: underline;
+  font-weight: bold;
+  background-color: rgb(0, 0, 142);
+  color: white;
 }
