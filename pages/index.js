@@ -10,11 +10,17 @@ const Home = () => {
       <div className='first-view'>
         <h1>Gastón Corbalán</h1>
         <p className='subtitle'>
-          STR Revenue Management and Pricing strategies at{' '}
-          <a target='_blank' href='https://blackbirdhm.com//'>
-            🐦‍⬛ <span>Blackbird HM</span>
+          Partner at{' '}
+          <a target='_blank' href='https://revfactor.io//'>
+          📊 <span>Revfactor</span>
           </a>
         </p>
+        <p className='subtitle'>
+    Revenue Management and Pricing specialist based in Madrid at{' '}
+  <a target='_blank' href='https://blackbirdhm.com//'>
+    🐦‍⬛ <span>Blackbird HM</span>
+  </a>
+</p>
         <p>
           Revenue management specialist based in Madrid. Apart from my current role, working to
           bring hotel revenue techniques to Airbnb listings using data analytics.
