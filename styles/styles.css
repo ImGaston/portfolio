@@ -1,14 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the portfolio landing */
 @media (prefers-color-scheme: light) {
   body {
-      background-color: #FFFFFF;
-      color: #121212;
+      background-color: #DDDAD3;
+      color: #161910;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-      background-color: #121212;
-      color: #FFFFFF;
+      background-color: #161910;
+      color: #DDDAD3;
   }
 }
 
@@ -50,6 +55,6 @@ a {
 
 a span:hover {
   font-weight: bold;
-  background-color: rgb(0, 0, 142);
+  background-color: #76574C;
   color: white;
 }
