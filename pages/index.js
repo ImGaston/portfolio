@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <main className="min-h-screen flex flex-col justify-center gap-6">
+    <main className="min-h-screen flex flex-col justify-center gap-6 max-w-[896px] mx-auto px-4 md:px-6 w-full">
       <div className="first-view space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold">Gastón Corbalán</h1>
         <p className="subtitle text-base">
