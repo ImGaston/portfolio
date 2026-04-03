@@ -13,6 +13,13 @@ body {
   margin: 0 auto;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0B3D2E;
+    color: #FAF9F6;
+  }
+}
+
 h1 {
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
   font-weight: 900;
@@ -23,12 +30,24 @@ h1 {
   margin-bottom: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  h1 {
+    color: #FCB017;
+  }
+}
+
 h3 {
   font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: 2em;
   letter-spacing: -0.02em;
   color: #0B3D2E;
+}
+
+@media (prefers-color-scheme: dark) {
+  h3 {
+    color: #FCB017;
+  }
 }
 
 p {
@@ -41,6 +60,12 @@ p {
 .subtitle {
   font-size: 16px;
   color: #2D3436;
+}
+
+@media (prefers-color-scheme: dark) {
+  .subtitle {
+    color: #FAF9F6;
+  }
 }
 
 a {
