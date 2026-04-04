@@ -13,7 +13,7 @@ const Home = () => {
             target="_blank"
             href="https://revfactor.io//"
             rel="noreferrer"
-            className="bg-amber/20 px-1.5 py-0.5 rounded-sm hover:bg-amber/40 transition-colors dark:bg-amber/30 dark:hover:bg-amber/50"
+            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors"
           >
             📊 <span>Revfactor</span>
           </a>
@@ -24,7 +24,7 @@ const Home = () => {
             target="_blank"
             href="https://blackbirdhm.com//"
             rel="noreferrer"
-            className="bg-amber/20 px-1.5 py-0.5 rounded-sm hover:bg-amber/40 transition-colors dark:bg-amber/30 dark:hover:bg-amber/50"
+            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors"
           >
             🐦‍⬛ <span>Blackbird HM</span>
           </a>
