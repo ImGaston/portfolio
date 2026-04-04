@@ -1,13 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-verdant: #0B3D2E;
+  --color-amber: #FCB017;
+  --color-parchment: #FAF9F6;
+  --color-slate: #2D3436;
+
+  --font-serif: 'Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-accent: 'Newsreader', Georgia, serif;
+}
 
 /* Design System: High-End Editorial — "The Modern Archivist" */
 
 body {
-  font-family: 'Inter', 'Noto Sans', 'Helvetica Neue', 'Arial', sans-serif;
-  background-color: #FAF9F6;
-  color: #2D3436;
+  font-family: var(--font-sans);
+  background-color: var(--color-parchment);
+  color: var(--color-slate);
   padding: 20px;
   max-width: 42em;
   margin: 0 auto;
@@ -15,38 +24,38 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #0B3D2E;
-    color: #FAF9F6;
+    background-color: var(--color-verdant);
+    color: var(--color-parchment);
   }
 }
 
 h1 {
-  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
+  font-family: var(--font-serif);
   font-weight: 900;
   font-size: 3em;
   letter-spacing: -0.02em;
-  color: #0B3D2E;
+  color: var(--color-verdant);
   margin-top: 1rem;
   margin-bottom: 0;
 }
 
 @media (prefers-color-scheme: dark) {
   h1 {
-    color: #FCB017;
+    color: var(--color-amber);
   }
 }
 
 h3 {
-  font-family: 'Noto Serif', Georgia, 'Times New Roman', Times, serif;
+  font-family: var(--font-serif);
   font-weight: 700;
   font-size: 2em;
   letter-spacing: -0.02em;
-  color: #0B3D2E;
+  color: var(--color-verdant);
 }
 
 @media (prefers-color-scheme: dark) {
   h3 {
-    color: #FCB017;
+    color: var(--color-amber);
   }
 }
 
@@ -59,12 +68,12 @@ p {
 
 .subtitle {
   font-size: 16px;
-  color: #2D3436;
+  color: var(--color-slate);
 }
 
 @media (prefers-color-scheme: dark) {
   .subtitle {
-    color: #FAF9F6;
+    color: var(--color-parchment);
   }
 }
 
