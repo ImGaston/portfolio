@@ -13,18 +13,18 @@ const Home = () => {
             target="_blank"
             href="https://revfactor.io//"
             rel="noreferrer"
-            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors"
+            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors dark:bg-espresso"
           >
             📊 <span>Revfactor</span>
           </a>
         </p>
         <p className="subtitle text-base text-slate dark:text-parchment">
-          Revenue Management and Pricing specialist at{' '}
+          Revenue Management and Pricing specialist at{' '}<br></br>
           <a
             target="_blank"
             href="https://blackbirdhm.com//"
             rel="noreferrer"
-            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors"
+            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors dark:bg-espresso"
           >
             🐦‍⬛ <span>Blackbird HM</span>
           </a>

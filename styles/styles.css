@@ -5,6 +5,7 @@
   --color-amber: #FCB017;
   --color-parchment: #FAF9F6;
   --color-slate: #2D3436;
+  --color-espresso: #542925;
 
   --font-serif: 'Noto Serif', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -17,9 +18,10 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-parchment);
   color: var(--color-slate);
-  padding: 20px;
   max-width: 42em;
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
