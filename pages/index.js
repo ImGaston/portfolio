@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <main className="min-h-screen flex flex-col justify-center gap-10 py-16">
       <div className="first-view space-y-5">
-        <h1 className="text-4xl md:text-5xl font-black font-serif tracking-tight text-verdant dark:text-amber">
+        <h1 className="text-4xl md:text-5xl pb-4 font-black font-serif tracking-tight text-verdant dark:text-amber">
           Gastón Corbalán
         </h1>
         <p className="subtitle text-base text-slate dark:text-parchment">
@@ -39,7 +39,7 @@ const Home = () => {
           target="_blank"
           href="https://calendar.app.google/Nu8B7evvfjS8apX79/"
           rel="noreferrer"
-          className="inline-flex items-center px-5 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:text-verdant"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:text-verdant"
         >
           🗓️ <span>Schedule a call</span>
         </a>
@@ -47,7 +47,7 @@ const Home = () => {
           target="_blank"
           href="https://cv.gastoncorbalan.com/"
           rel="noreferrer"
-          className="inline-flex items-center px-5 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
         >
           🔗 <span>CV</span>
         </a>
