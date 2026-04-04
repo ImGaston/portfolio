@@ -39,7 +39,7 @@ const Home = () => {
           target="_blank"
           href="https://calendar.app.google/Nu8B7evvfjS8apX79/"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-amber text-verdant font-semibold hover:brightness-110 transition-all w-fit dark:bg-amber dark:text-verdant"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:bg-amber dark:text-verdant"
         >
           🗓️ <span>Schedule a call</span>
         </a>
