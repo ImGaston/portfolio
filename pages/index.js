@@ -39,7 +39,7 @@ const Home = () => {
           target="_blank"
           href="https://calendar.app.google/Nu8B7evvfjS8apX79/"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:text-verdant"
+          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:text-verdant"
         >
           🗓️ <span>Schedule a call</span>
         </a>
@@ -47,13 +47,13 @@ const Home = () => {
           target="_blank"
           href="https://cv.gastoncorbalan.com/"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
         >
           🔗 <span>CV</span>
         </a>
         <a
           href="mailto: hola@gastoncorbalan.com"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
         >
           ✉️ <span>Contact</span>
         </a>
