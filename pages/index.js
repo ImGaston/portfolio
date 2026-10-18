@@ -1,6 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
+import { getAllPosts } from '../lib/posts';
 
-const Home = () => {
+const Home = ({ hasPosts }) => {
   return (
     <main className="min-h-screen flex flex-col justify-center gap-10 py-16">
       <div className="first-view space-y-5">
@@ -51,6 +53,14 @@ const Home = () => {
         >
           🔗 <span>CV</span>
         </a>
+        {hasPosts && (
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          >
+            ✍️ <span>Blog</span>
+          </Link>
+        )}
         <a
           href="mailto: hola@gastoncorbalan.com"
           className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
@@ -61,5 +71,9 @@ const Home = () => {
     </main>
   );
 };
+
+export function getStaticProps() {
+  return { props: { hasPosts: getAllPosts().length > 0 } };
+}
 
 export default Home;

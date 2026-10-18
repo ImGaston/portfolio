@@ -16,6 +16,10 @@ pages/
   _app.js        → Global layout, favicon, title
   _document.js   → SEO meta tags, Google Fonts
   index.js       → Single-page portfolio (hero, links)
+  blog/          → Blog index and posts (from content/posts)
+content/posts/   → Markdown posts generated from Bear by scripts/bear-sync.mjs
+lib/             → Post loading (posts.js) and date formatting (format.js)
+scripts/         → Bear → blog sync script + launchd template (see docs/bear-blog.md)
 styles/
   styles.css     → Global styles + Tailwind directives
 public/
@@ -44,6 +48,8 @@ See `design.md` for the full "High-End Editorial / Modern Archivist" design syst
 npm run dev    # Development server
 npm run build  # Production build
 npm run start  # Start production server
+npm run bear:sync     # (Mac) Pull #blog/publicado notes from Bear into content/posts
+npm run bear:publish  # (Mac) Same, then commit and push
 ```
 
 ## Deployment

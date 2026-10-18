@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "bear:sync": "node --no-warnings scripts/bear-sync.mjs",
+    "bear:publish": "node --no-warnings scripts/bear-sync.mjs --push"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,8 @@
     "node": "22.x"
   },
   "dependencies": {
+    "marked": "^12.0.2",
+    "marked-footnote": "^1.4.0",
     "next": "^14.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
