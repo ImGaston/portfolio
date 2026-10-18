@@ -19,7 +19,7 @@ pages/
   blog/          → Blog index and posts (from content/posts)
 content/posts/   → Markdown posts generated from Bear by scripts/bear-sync.mjs
 lib/             → Post loading (posts.js) and date formatting (format.js)
-scripts/         → Bear → blog sync script + launchd template (see docs/bear-blog.md)
+scripts/         → Bear → blog sync script + launchd installer (see docs/bear-blog.md)
 styles/
   styles.css     → Global styles + Tailwind directives
 public/
@@ -49,7 +49,8 @@ npm run dev    # Development server
 npm run build  # Production build
 npm run start  # Start production server
 npm run bear:sync     # (Mac) Pull #blog/publicado notes from Bear into content/posts
-npm run bear:publish  # (Mac) Same, then commit and push
+npm run bear:publish  # (Mac) Same, then commit and push to main
+npm run bear:install  # (Mac) Run bear:publish every 5 min via launchd (bear:status, bear:uninstall)
 ```
 
 ## Deployment

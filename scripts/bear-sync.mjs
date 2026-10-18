@@ -301,20 +301,32 @@ function main() {
     }
   }
 
-  if (!changes.length) {
-    console.log(`Sin cambios (${notes.length} notas publicadas).`);
-    return;
-  }
-  console.log(changes.map((c) => `  ${c}`).join('\n'));
+  const stamp = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' });
+  if (changes.length) console.log(`[${stamp}]\n${changes.map((c) => `  ${c}`).join('\n')}`);
+  else console.log(`[${stamp}] Sin cambios en Bear (${notes.length} notas publicadas).`);
   if (DRY_RUN || !PUSH) return;
 
+  // Con --push se commitea lo que haya pendiente en content/posts y public/blog,
+  // aunque lo haya generado una corrida anterior de bear:sync.
+  const run = (...a) => execFileSync('git', a, { cwd: ROOT }).toString().trim();
   const git = (...a) => execFileSync('git', a, { cwd: ROOT, stdio: 'inherit' });
+  const branch = run('rev-parse', '--abbrev-ref', 'HEAD');
+  if (branch !== 'main') {
+    console.error(`No publico: estás en la rama "${branch}". Pasate a main (git checkout main).`);
+    process.exit(1);
+  }
   git('add', '--all', 'content/posts', 'public/blog');
-  const staged = execFileSync('git', ['diff', '--cached', '--name-only'], { cwd: ROOT }).toString().trim();
-  if (!staged) return;
-  git('commit', '-m', `blog: sincronizar desde Bear\n\n${changes.join('\n')}`);
-  git('pull', '--rebase');
-  git('push');
+  const staged = run('diff', '--cached', '--name-only');
+  if (staged) {
+    const summary = changes.length ? changes.join('\n') : staged;
+    git('commit', '-q', '-m', `blog: sincronizar desde Bear\n\n${summary}`);
+  }
+  git('fetch', '-q', 'origin', 'main');
+  const ahead = Number(run('rev-list', '--count', 'origin/main..HEAD'));
+  if (!ahead) return;
+  git('pull', '-q', '--rebase', '--autostash', 'origin', 'main');
+  git('push', '-q', 'origin', 'main');
+  console.log('  publicado: push a main, Vercel lo despliega en un minuto.');
 }
 
 main();
