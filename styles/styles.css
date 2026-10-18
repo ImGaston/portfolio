@@ -168,3 +168,16 @@ a {
   .post th,
   .post td { border-color: rgba(250, 249, 246, 0.2); }
 }
+
+.post li:has(> input[type='checkbox']) { list-style: none; margin-left: -1.5rem; }
+.post input[type='checkbox'] { accent-color: var(--color-verdant); margin-right: 0.5rem; }
+.post del { opacity: 0.7; }
+.post u { text-decoration-color: var(--color-amber); text-underline-offset: 3px; }
+.post .footnotes { font-size: 0.9em; margin-top: 3rem; border-top: 1px solid rgba(45, 52, 54, 0.2); }
+.post .footnotes h2 { font-size: 1em; font-family: var(--font-sans); }
+.post sup a { text-decoration: none; }
+
+@media (prefers-color-scheme: dark) {
+  .post input[type='checkbox'] { accent-color: var(--color-amber); }
+  .post .footnotes { border-color: rgba(250, 249, 246, 0.2); }
+}

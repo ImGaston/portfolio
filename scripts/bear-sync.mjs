@@ -123,11 +123,16 @@ function convert(note, { slug, titleToSlug }) {
   lines = lines.filter((l) => !isTagOnlyLine(l));
   let body = lines.join('\n');
 
+  // El código (bloques ``` e `inline`) no se toca: se aparta y se repone al final.
+  const code = [];
+  body = body.replace(/```[\s\S]*?```|`[^`\n]+`/g, (m) => `\u0000${code.push(m) - 1}\u0000`);
+
   // Etiquetas #blog/... sueltas dentro del texto.
   body = body.replace(/(^|\s)#blog\/[^\s#]+/gi, '$1');
 
-  // ==resaltado== de Bear → <mark>.
+  // ==resaltado== → <mark>, ~subrayado~ → <u> (~~tachado~~ lo resuelve el render).
   body = body.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+  body = body.replace(/(^|[^~\w])~(?!~)([^~\n]+?)~(?![~\w])/g, '$1<u>$2</u>');
 
   // [[Otra nota]] → enlace si esa nota también está publicada, si no texto plano.
   body = body.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g, (_, target, alias) => {
@@ -136,11 +141,17 @@ function convert(note, { slug, titleToSlug }) {
     return targetSlug ? `[${label}](/blog/${targetSlug})` : label;
   });
 
-  // Imágenes adjuntas: se copian a public/blog/<slug>/ y se reescribe la ruta.
+  // Imágenes y archivos adjuntos (PDF, etc.): se copian a public/blog/<slug>/
+  // y se reescribe la ruta. El comentario <!-- {"width":…} --> de Bear se descarta.
   const copies = [];
-  body = body.replace(/!\[([^\]]*)\]\(([^)\s]+)\)(<!--.*?-->)?/g, (match, alt, src) => {
-    if (/^[a-z]+:\/\//i.test(src)) return `![${alt}](${src})`;
-    const filename = decodeURIComponent(src);
+  body = body.replace(/(!?)\[([^\]]*)\]\(([^)\s]+)\)(<!--.*?-->)?/g, (match, bang, label, src) => {
+    if (/^([a-z]+:|\/|#)/i.test(src)) return `${bang}[${label}](${src})`;
+    let filename;
+    try {
+      filename = decodeURIComponent(src);
+    } catch {
+      return match;
+    }
     const file = note.files.find((f) => f.filename === filename);
     if (!file) return match;
     const from = ['Note Images', 'Note Files']
@@ -151,8 +162,10 @@ function convert(note, { slug, titleToSlug }) {
       .extname(filename)
       .toLowerCase()}`;
     copies.push({ from, to: path.join(MEDIA_DIR, slug, safeName) });
-    return `![${alt}](/blog/${slug}/${safeName})`;
+    return `${bang}[${label}](/blog/${slug}/${safeName})`;
   });
+
+  body = body.replace(/\u0000(\d+)\u0000/g, (_, i) => code[i]);
 
   return { body: body.replace(/^\s+/, '').replace(/\s+$/, '') + '\n', copies };
 }
@@ -261,7 +274,7 @@ function main() {
     const keep = new Set(copies.map((c) => path.basename(c.to)));
     for (const { from, to } of copies) {
       if (fs.existsSync(to) && fs.statSync(to).size === fs.statSync(from).size) continue;
-      changes.push(`imagen: ${path.relative(ROOT, to)}`);
+      changes.push(`adjunto: ${path.relative(ROOT, to)}`);
       if (!DRY_RUN) {
         fs.mkdirSync(path.dirname(to), { recursive: true });
         fs.copyFileSync(from, to);
@@ -270,7 +283,7 @@ function main() {
     const mediaDir = path.join(MEDIA_DIR, slug);
     if (fs.existsSync(mediaDir)) {
       for (const f of fs.readdirSync(mediaDir).filter((f) => !keep.has(f))) {
-        changes.push(`imagen borrada: ${slug}/${f}`);
+        changes.push(`adjunto borrado: ${slug}/${f}`);
         if (!DRY_RUN) fs.rmSync(path.join(mediaDir, f));
       }
     }
