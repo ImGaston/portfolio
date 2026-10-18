@@ -315,7 +315,9 @@ function main() {
     console.error(`No publico: estás en la rama "${branch}". Pasate a main (git checkout main).`);
     process.exit(1);
   }
-  git('add', '--all', 'content/posts', 'public/blog');
+  // public/blog solo existe si algún post tiene imágenes; git falla con rutas inexistentes.
+  const paths = ['content/posts', 'public/blog'].filter((p) => fs.existsSync(path.join(ROOT, p)));
+  git('add', '--all', '--', ...paths);
   const staged = run('diff', '--cached', '--name-only');
   if (staged) {
     const summary = changes.length ? changes.join('\n') : staged;
