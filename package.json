@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "bear:sync": "node --no-warnings scripts/bear-sync.mjs",
-    "bear:publish": "node --no-warnings scripts/bear-sync.mjs --push"
+    "bear:publish": "node --no-warnings scripts/bear-sync.mjs --push",
+    "bear:install": "node scripts/bear-agent.mjs install",
+    "bear:uninstall": "node scripts/bear-agent.mjs uninstall",
+    "bear:status": "node scripts/bear-agent.mjs status"
   },
   "keywords": [],
   "author": "",

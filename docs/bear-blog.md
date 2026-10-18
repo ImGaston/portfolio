@@ -13,7 +13,7 @@ Escribís en Bear y las notas con la etiqueta `#blog/publicado` aparecen en `/bl
 `scripts/bear-sync.mjs` corre **en tu Mac**: abre la base de Bear en solo lectura
 (`~/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/database.sqlite`),
 toma las notas con `#blog/publicado` y escribe un `.md` por nota en `content/posts/`
-(y las imágenes en `public/blog/<slug>/`). Con `--push` hace commit y push, y el deploy
+(y las imágenes y adjuntos en `public/blog/<slug>/`). Con `--push` hace commit y push, y el deploy
 del sitio se encarga del resto.
 
 - **Título**: la primera línea `# Título` de la nota.
@@ -24,36 +24,41 @@ del sitio se encarga del resto.
   se convierte en enlace si esa nota también está publicada.
 - Las notas bloqueadas (cifradas) no se publican.
 
+## Publicación automática (recomendado)
+
+Una sola vez, desde la carpeta del repo en tu Mac:
+
+```bash
+git checkout main && git pull
+npm run bear:install
+```
+
+Después dale **Acceso total al disco** a node (el comando te muestra la ruta exacta):
+Ajustes del Sistema → Privacidad y seguridad → Acceso total al disco → "+" →
+Cmd+Shift+G → pegá la ruta → activalo.
+
+Listo: cada 5 minutos revisa Bear y, si cambió algo en una nota con `#blog/publicado`,
+hace commit y push a `main`, y Vercel lo publica. Sigue funcionando después de reiniciar.
+
+```bash
+npm run bear:status      # si está activo y las últimas líneas del log
+npm run bear:uninstall   # desactivarlo
+```
+
+El log completo está en `~/Library/Logs/bear-sync.log`. Si movés la carpeta del repo
+o cambiás de versión de node, volvé a correr `npm run bear:install`.
+
 ## Uso manual
 
 Requiere Node 22.13 o superior (usa `node:sqlite`, sin dependencias extra).
 
 ```bash
-cd ~/Code/portfolio        # donde tengas el repo
-npm run bear:sync          # genera los cambios sin tocar git (para revisar)
-npm run bear:publish       # genera, commitea y pushea
+npm run bear:sync          # genera los .md sin tocar git (para revisar)
+npm run bear:publish       # genera, commitea lo pendiente y pushea a main
 node --no-warnings scripts/bear-sync.mjs --dry-run   # solo muestra qué haría
 ```
 
-La primera vez macOS puede pedir permiso para que Terminal acceda a datos de otras apps.
-Si falla con un error de permisos: Ajustes del Sistema → Privacidad y seguridad →
-Acceso total al disco → activá Terminal.
-
-## Automático cada 15 minutos (opcional)
-
-1. Editá `scripts/com.gastoncorbalan.bear-sync.plist` y cambiá `$HOME/Code/portfolio`
-   por la ruta de tu repo.
-2. Instalalo:
-   ```bash
-   cp scripts/com.gastoncorbalan.bear-sync.plist ~/Library/LaunchAgents/
-   launchctl load ~/Library/LaunchAgents/com.gastoncorbalan.bear-sync.plist
-   ```
-3. Dale **Acceso total al disco** a `/bin/zsh` y a tu `node`
-   (`which node`, p. ej. `/opt/homebrew/bin/node`), porque launchd no hereda el permiso de Terminal.
-4. El log queda en `/tmp/bear-sync.log`. Para desactivarlo:
-   `launchctl unload ~/Library/LaunchAgents/com.gastoncorbalan.bear-sync.plist`.
-
-El job usa la misma autenticación de git que tu Terminal (llavero o clave SSH).
+`bear:publish` solo publica desde la rama `main`.
 
 ## Variables opcionales
 
