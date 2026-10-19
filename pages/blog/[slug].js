@@ -6,7 +6,7 @@ import { formatDate } from '../../lib/format';
 
 const Post = ({ post }) => {
   return (
-    <main lang="es" className="min-h-screen flex flex-col gap-8 py-16">
+    <main lang="es" className="py-16 md:py-28 space-y-14">
       <Head>
         <title>{`${post.title} · Gastón Corbalán`}</title>
         {post.summary && <meta name="description" content={post.summary} />}
@@ -14,21 +14,22 @@ const Post = ({ post }) => {
         {post.summary && <meta property="og:description" content={post.summary} />}
         <meta property="og:type" content="article" />
       </Head>
-      <Link
-        href="/blog"
-        className="text-sm font-medium text-verdant hover:brightness-110 dark:text-parchment"
-      >
-        ← Blog
-      </Link>
-      <header className="space-y-2">
-        <h1 className="text-4xl md:text-5xl font-black font-serif tracking-tight text-verdant dark:text-amber">
-          {post.title}
-        </h1>
-        <p className="font-accent italic text-slate/70 dark:text-parchment/70">
-          {formatDate(post.date)}
-        </p>
+      <header>
+        <Link href="/" className="font-medium">
+          Gastón Corbalán
+        </Link>
+        <span className="text-muted"> / </span>
+        <Link href="/blog" className="text-muted hover:text-fg transition-colors">
+          Blog
+        </Link>
       </header>
-      <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div className="space-y-8">
+        <div>
+          <h1 className="font-medium">{post.title}</h1>
+          <p className="text-muted">{formatDate(post.date)}</p>
+        </div>
+        <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
+      </div>
     </main>
   );
 };

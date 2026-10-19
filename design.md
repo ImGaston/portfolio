@@ -1,25 +1,25 @@
-# Design System Document: High-End Editorial
+# Design System: Minimal
 
-## 1. Overview & Creative North Star: "The Modern Archivist"
-This design system is built for an intellectual personal brand that demands authority and quiet luxury. It is inspired by archival prints, vintage stationery, and modern architectural restraint.
+Inspired by kyusuf.com: one typeface, a narrow column, neutral tones and very little decoration. The content carries the page.
 
-## 2. Visual Principles
-- **Intellectual Authority:** Use of strong serif typography and deep, saturated tones.
-- **Architectural Spacing:** Generous white space to allow content to "breathe."
-- **Intentional Accents:** Using gold/amber sparingly to guide the eye to key actions.
+## Principles
+- **Quiet:** no display type, no colored blocks, no emojis. Hierarchy comes from weight (400/500) and the muted tone, not size.
+- **Narrow column:** 36rem max width, left-aligned, generous vertical space between sections.
+- **Links stay readable:** inline links get a faint underline that darkens on hover; navigation links are muted and turn full color on hover.
 
-## 3. Color Palette
-- **Primary (Deep Verdant):** `#0B3D2E` — Used for headings, primary backgrounds, and brand identifiers.
-- **Secondary (Gold/Amber):** `#FCB017` — Reserved for primary buttons, active states, and highlights.
-- **Surface (Parchment):** `#FAF9F6` — The primary background color for high readability.
-- **Accent (Dark Slate):** `#2D3436` — For body text and secondary UI elements.
+## Color tokens (CSS variables in `styles/styles.css`, exposed to Tailwind)
+| Token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `bg` | `#fcfcfb` | `#111111` | Page background |
+| `fg` | `#171717` | `#ededed` | Body text, titles |
+| `muted` | `#737373` | `#8f8f8f` | Dates, labels, nav, secondary copy |
+| `line` | 10% black | 12% white | Rules, table borders |
 
-## 4. Typography
-- **Headings:** Noto Serif (Bold/Black) — Tracking: -0.02em.
-- **Body:** Inter or Noto Sans — Tracking: normal.
-- **Accents:** Newsreader (Italic) — For quotes and captions.
+Dark mode follows the system (`prefers-color-scheme`).
 
-## 5. UI Elements
-- **Buttons:** Rounded-sm (4px) or Sharp. Primary buttons use #FCB017 with #0B3D2E text.
-- **Inputs:** Minimalist with bottom-border only or very light tonal fills.
-- **Cards:** No borders, using subtle background shifts or slight shadows.
+## Typography
+- **Inter** (400, 500, 600) for everything, 15px base, 1.65 line height.
+- Page titles and post headings use weight 500 at roughly body size.
+
+## Blog posts
+Post HTML from Bear is styled under `.post` in `styles/styles.css`: muted blockquotes with a thin rule, tinted code blocks, hairline tables, footnotes in muted small text.

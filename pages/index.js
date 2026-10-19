@@ -1,79 +1,103 @@
 import React from 'react';
 import Link from 'next/link';
 import { getAllPosts } from '../lib/posts';
+import { formatShortDate } from '../lib/format';
 
-const Home = ({ hasPosts }) => {
+const Home = ({ posts }) => {
   return (
-    <main className="min-h-screen flex flex-col justify-center gap-10 py-16">
-      <div className="first-view space-y-5">
-        <h1 className="text-4xl md:text-5xl pb-4 font-black font-serif tracking-tight text-verdant dark:text-amber">
+    <main className="py-16 md:py-28 space-y-14">
+      <header>
+        <Link href="/" className="font-medium">
           Gastón Corbalán
-        </h1>
-        <p className="subtitle text-base text-slate dark:text-parchment">
-          Co-founder{' '}
+        </Link>
+      </header>
+
+      <section className="space-y-4">
+        <h1 className="text-muted">Revenue Manager based in Madrid.</h1>
+        <p>
+          Co-founder of{' '}
           <a
             target="_blank"
-            href="https://revfactor.io//"
+            href="https://revfactor.io/"
             rel="noreferrer"
-            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors dark:bg-espresso"
+            className="link"
           >
-            📊 <span>Revfactor</span>
+            Revfactor
           </a>
-        </p>
-        <p className="subtitle text-base text-slate dark:text-parchment">
-          Revenue Management and Pricing specialist at{' '}<br></br>
+          . Revenue Management and Pricing specialist at{' '}
           <a
             target="_blank"
-            href="https://blackbirdhm.com//"
+            href="https://blackbirdhm.com/"
             rel="noreferrer"
-            className="bg-amber px-1.5 py-0.5 rounded-sm hover:brightness-110 transition-colors dark:bg-espresso"
+            className="link"
           >
-            🐦‍⬛ <span>Blackbird HM</span>
+            Blackbird HM
           </a>
+          .
         </p>
-        <p className="text-base leading-relaxed text-slate dark:text-parchment max-w-prose">
-          Revenue Manager based in Madrid. Apart from my current role, working to
-          bring hotel revenue techniques to Airbnb listings using data analytics.
+        <p>
+          Apart from my current role, working to bring hotel revenue techniques
+          to Airbnb listings using data analytics.
         </p>
-      </div>
-      <div className="flex flex-col gap-y-3">
+      </section>
+
+      {posts.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-muted">
+            <Link href="/blog" className="hover:text-fg transition-colors">
+              Blog
+            </Link>
+          </h2>
+          <ul>
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group flex items-baseline justify-between gap-4 py-1"
+                >
+                  <span className="group-hover:underline decoration-muted underline-offset-[3px]">
+                    {post.title}
+                  </span>
+                  <span className="shrink-0 text-sm text-muted tabular-nums">
+                    {formatShortDate(post.date)}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <nav className="flex flex-wrap gap-x-5 gap-y-2 text-muted">
         <a
           target="_blank"
           href="https://calendar.app.google/Nu8B7evvfjS8apX79/"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:brightness-110 transition-all w-fit dark:text-verdant"
+          className="hover:text-fg transition-colors"
         >
-          🗓️ <span>Schedule a call</span>
+          Schedule a call
         </a>
         <a
           target="_blank"
           href="https://cv.gastoncorbalan.com/"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          className="hover:text-fg transition-colors"
         >
-          🔗 <span>CV</span>
+          CV
         </a>
-        {hasPosts && (
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
-          >
-            ✍️ <span>Blog</span>
-          </Link>
-        )}
         <a
-          href="mailto: hola@gastoncorbalan.com"
-          className="inline-flex items-center gap-2 px-0 py-2.5 rounded-sm text-verdant font-medium hover:bg-verdant hover:text-parchment transition-all w-fit dark:text-parchment dark:hover:bg-amber dark:hover:text-verdant"
+          href="mailto:hola@gastoncorbalan.com"
+          className="hover:text-fg transition-colors"
         >
-          ✉️ <span>Contact</span>
+          Contact
         </a>
-      </div>
+      </nav>
     </main>
   );
 };
 
 export function getStaticProps() {
-  return { props: { hasPosts: getAllPosts().length > 0 } };
+  return { props: { posts: getAllPosts().slice(0, 5) } };
 }
 
 export default Home;
