@@ -24,7 +24,7 @@ styles/
   styles.css     → Global styles + Tailwind directives
 public/
   images/        → Project screenshots
-  favicon.png
+  favicon.png    → Favicon (48×48), plus apple-touch-icon.png (180×180)
   og.png         → Open Graph image (1200×630)
 tailwind.config.js → Content paths (tokens live in styles.css)
 ```
