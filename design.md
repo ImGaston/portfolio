@@ -19,6 +19,7 @@ Dark mode follows the system (`prefers-color-scheme`).
 
 ## Typography
 - **Newsreader** (400, 500, 600, italic 400) for everything, 18px base, 1.6 line height.
+- **Paper Mono** (400, 500), self-hosted from `public/fonts/paper-mono-v1.000`, for inline code and code blocks (`--font-mono`).
 - Page titles and post headings use weight 500 at roughly body size.
 
 ## Blog posts

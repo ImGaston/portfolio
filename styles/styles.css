@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Paper Mono (OFL), self-hosted in public/fonts, for code. */
+@font-face {
+  font-family: 'Paper Mono';
+  src: url('/fonts/paper-mono-v1.000/fonts/webfonts/PaperMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Paper Mono';
+  src: url('/fonts/paper-mono-v1.000/fonts/webfonts/PaperMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Minimal: one typeface (Newsreader), a narrow column, neutral tones. See design.md. */
 
 :root {
@@ -18,7 +35,7 @@
     --muted: #8f8f8f;
     --line: rgba(255, 255, 255, 0.12);
     --tint: rgba(255, 255, 255, 0.06);
-  --highlight: #4d4426;
+    --highlight: #4d4426;
   }
 }
 
@@ -29,6 +46,7 @@
   --color-line: var(--line);
 
   --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Paper Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 html {
@@ -50,6 +68,13 @@ body {
 ::selection {
   background: var(--fg);
   color: var(--bg);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
 }
 
 a {

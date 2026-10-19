@@ -37,6 +37,7 @@ See `design.md`. Minimal style inspired by kyusuf.com: Newsreader only, 36rem co
 
 ### Fonts
 - **Everything:** Newsreader (400/500/600, italic 400)
+- **Code:** Paper Mono (400/500), self-hosted in `public/fonts/paper-mono-v1.000`
 
 ## Commands
 ```bash
