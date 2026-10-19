@@ -22,4 +22,4 @@ Dark mode follows the system (`prefers-color-scheme`).
 - Page titles and post headings use weight 500 at roughly body size.
 
 ## Blog posts
-Post HTML from Bear is styled under `.post` in `styles/styles.css`: muted blockquotes with a thin rule, tinted code blocks, hairline tables, footnotes in muted small text.
+Post HTML from Bear is styled under `.post` in `styles/styles.css`: muted yellow highlights (`--highlight`), muted blockquotes with a thin rule, tinted code blocks, hairline tables, footnotes in muted small text.
