@@ -1,6 +1,6 @@
 # Design System: Minimal
 
-Inspired by kyusuf.com: one typeface, a narrow column, neutral tones and very little decoration. The content carries the page.
+Inspired by kyusuf.com: one typeface (Newsreader), a narrow column, neutral tones and very little decoration. The content carries the page.
 
 ## Principles
 - **Quiet:** no display type, no colored blocks, no emojis. Hierarchy comes from weight (400/500) and the muted tone, not size.
@@ -18,7 +18,7 @@ Inspired by kyusuf.com: one typeface, a narrow column, neutral tones and very li
 Dark mode follows the system (`prefers-color-scheme`).
 
 ## Typography
-- **Inter** (400, 500, 600) for everything, 15px base, 1.65 line height.
+- **Newsreader** (400, 500, 600, italic 400) for everything, 18px base, 1.6 line height.
 - Page titles and post headings use weight 500 at roughly body size.
 
 ## Blog posts

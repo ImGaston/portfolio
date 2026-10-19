@@ -30,13 +30,13 @@ tailwind.config.js → Content paths (tokens live in styles.css)
 ```
 
 ## Design System
-See `design.md`. Minimal style inspired by kyusuf.com: Inter only, 36rem column, neutral colors.
+See `design.md`. Minimal style inspired by kyusuf.com: Newsreader only, 36rem column, neutral colors.
 
 ### Colors (CSS variables → Tailwind tokens)
 - `bg`, `fg`, `muted`, `line`, defined in `styles/styles.css` with light and dark (`prefers-color-scheme`) values
 
 ### Fonts
-- **Everything:** Inter (400/500/600)
+- **Everything:** Newsreader (400/500/600, italic 400)
 
 ## Commands
 ```bash
