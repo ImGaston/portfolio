@@ -1,82 +1,80 @@
 @import "tailwindcss";
 
-@theme {
-  --color-verdant: #0B3D2E;
-  --color-amber: #FCB017;
-  --color-parchment: #FAF9F6;
-  --color-slate: #2D3436;
-  --color-espresso: #542925;
-
-  --font-serif: 'Noto Serif', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
-  --font-accent: 'Newsreader', Georgia, serif;
+/* Paper Mono (OFL), self-hosted in public/fonts, for code. */
+@font-face {
+  font-family: 'Paper Mono';
+  src: url('/fonts/paper-mono-v1.000/fonts/webfonts/PaperMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Design System: High-End Editorial — "The Modern Archivist" */
+@font-face {
+  font-family: 'Paper Mono';
+  src: url('/fonts/paper-mono-v1.000/fonts/webfonts/PaperMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Minimal: one typeface (Newsreader), a narrow column, neutral tones. See design.md. */
+
+:root {
+  --bg: #fcfcfb;
+  --fg: #171717;
+  --muted: #737373;
+  --line: rgba(0, 0, 0, 0.1);
+  --tint: rgba(0, 0, 0, 0.04);
+  --highlight: #efe3b4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --fg: #ededed;
+    --muted: #8f8f8f;
+    --line: rgba(255, 255, 255, 0.12);
+    --tint: rgba(255, 255, 255, 0.06);
+    --highlight: #4d4426;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Paper Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+html {
+  color-scheme: light dark;
+}
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-parchment);
-  color: var(--color-slate);
-  max-width: 42em;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--fg);
+  max-width: 36rem;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 1.25rem;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--color-verdant);
-    color: var(--color-parchment);
-  }
+::selection {
+  background: var(--fg);
+  color: var(--bg);
 }
 
-h1 {
-  font-family: var(--font-serif);
-  font-weight: 900;
-  font-size: 3em;
-  letter-spacing: -0.02em;
-  color: var(--color-verdant);
-  margin-top: 1rem;
-  margin-bottom: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  h1 {
-    color: var(--color-amber);
-  }
-}
-
-h3 {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 2em;
-  letter-spacing: -0.02em;
-  color: var(--color-verdant);
-}
-
-@media (prefers-color-scheme: dark) {
-  h3 {
-    color: var(--color-amber);
-  }
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.8em;
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  font-size: 16px;
-  color: var(--color-slate);
-}
-
-@media (prefers-color-scheme: dark) {
-  .subtitle {
-    color: var(--color-parchment);
-  }
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
 }
 
 a {
@@ -84,100 +82,94 @@ a {
   text-decoration: none;
 }
 
+/* Inline links: quiet underline that darkens on hover. */
+.link,
+.post a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+
+.link:hover,
+.post a:hover {
+  text-decoration-color: currentColor;
+}
+
 /* Blog posts (HTML generated from Bear markdown) */
+
+.post > * + * {
+  margin-top: 1.25rem;
+}
 
 .post h1,
 .post h2,
 .post h3,
 .post h4 {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--color-verdant);
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-top: 2.5rem;
 }
 
-.post h1 { font-size: 2em; }
-.post h2 { font-size: 1.6em; }
-.post h3 { font-size: 1.3em; }
-.post h4 { font-size: 1.1em; }
+.post h1,
+.post h2 { font-size: 1.15em; }
+.post h3,
+.post h4 { font-size: 1em; }
 
-.post p,
-.post ul,
-.post ol,
-.post blockquote,
-.post pre,
-.post table {
-  margin-bottom: 1.25rem;
-}
+.post strong { font-weight: 600; }
 
-.post ul { list-style: disc; padding-left: 1.5rem; }
-.post ol { list-style: decimal; padding-left: 1.5rem; }
-.post li { line-height: 1.8em; }
-
-.post a {
-  text-decoration: underline;
-  text-decoration-color: var(--color-amber);
-  text-underline-offset: 3px;
-}
+.post ul { list-style: disc; padding-left: 1.25rem; }
+.post ol { list-style: decimal; padding-left: 1.25rem; }
+.post li + li { margin-top: 0.25rem; }
+.post li::marker { color: var(--muted); }
 
 .post blockquote {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.15em;
-  border-left: 3px solid var(--color-amber);
+  border-left: 1px solid var(--line);
   padding-left: 1rem;
+  color: var(--muted);
 }
 
 .post code {
-  font-size: 0.9em;
-  background: rgba(11, 61, 46, 0.07);
+  font-size: 0.875em;
+  background: var(--tint);
   padding: 0.1em 0.3em;
   border-radius: 4px;
 }
 
 .post pre {
   overflow-x: auto;
-  background: rgba(11, 61, 46, 0.07);
+  background: var(--tint);
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .post pre code { background: none; padding: 0; }
 
-.post img { max-width: 100%; height: auto; border-radius: 4px; margin: 1.5rem 0; }
+/* Shiki output: token colors come as --shiki-light / --shiki-dark variables. */
+.post pre.shiki,
+.post pre.shiki span { color: var(--shiki-light); }
 
-.post hr { border: 0; border-top: 1px solid rgba(45, 52, 54, 0.2); margin: 2rem 0; }
+@media (prefers-color-scheme: dark) {
+  .post pre.shiki,
+  .post pre.shiki span { color: var(--shiki-dark); }
+}
 
-.post mark { background: var(--color-amber); color: var(--color-verdant); padding: 0 0.15em; }
+.post img { max-width: 100%; height: auto; border-radius: 6px; }
 
-.post table { width: 100%; border-collapse: collapse; }
+.post hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+
+.post mark { background: var(--highlight); color: inherit; padding: 0.05em 0.2em; border-radius: 3px; }
+
+.post table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.post th { font-weight: 500; }
 .post th,
-.post td { border-bottom: 1px solid rgba(45, 52, 54, 0.2); padding: 0.4rem 0.5rem; text-align: left; }
+.post td { border-bottom: 1px solid var(--line); padding: 0.4rem 0.5rem 0.4rem 0; text-align: left; }
 
-@media (prefers-color-scheme: dark) {
-  .post h1,
-  .post h2,
-  .post h3,
-  .post h4 { color: var(--color-amber); }
-  .post code,
-  .post pre { background: rgba(250, 249, 246, 0.08); }
-  .post hr,
-  .post th,
-  .post td { border-color: rgba(250, 249, 246, 0.2); }
-}
-
-.post li:has(> input[type='checkbox']) { list-style: none; margin-left: -1.5rem; }
-.post input[type='checkbox'] { accent-color: var(--color-verdant); margin-right: 0.5rem; }
-.post del { opacity: 0.7; }
-.post u { text-decoration-color: var(--color-amber); text-underline-offset: 3px; }
-.post .footnotes { font-size: 0.9em; margin-top: 3rem; border-top: 1px solid rgba(45, 52, 54, 0.2); }
-.post .footnotes h2 { font-size: 1em; font-family: var(--font-sans); }
+.post li:has(> input[type='checkbox']) { list-style: none; margin-left: -1.25rem; }
+.post input[type='checkbox'] { accent-color: var(--fg); margin-right: 0.5rem; }
+.post del { color: var(--muted); }
+.post u { text-decoration-color: var(--line); text-underline-offset: 3px; }
+.post .footnotes { font-size: 0.875em; color: var(--muted); margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.post .footnotes h2 { font-size: 1em; margin-top: 0; }
 .post sup a { text-decoration: none; }
-
-@media (prefers-color-scheme: dark) {
-  .post input[type='checkbox'] { accent-color: var(--color-amber); }
-  .post .footnotes { border-color: rgba(250, 249, 246, 0.2); }
-}

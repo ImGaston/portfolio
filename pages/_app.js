@@ -7,7 +7,8 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Gastón Corbalán</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="/favicon.png?v=3" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <Component {...pageProps} />
     </>

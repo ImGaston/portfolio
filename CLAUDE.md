@@ -24,24 +24,20 @@ styles/
   styles.css     → Global styles + Tailwind directives
 public/
   images/        → Project screenshots
-  favicon.png
-  opengraph-cover.png
-tailwind.config.js → Custom colors, fonts
+  favicon.png    → Favicon (48×48), plus apple-touch-icon.png (180×180)
+  og.png         → Open Graph image (1200×630)
+tailwind.config.js → Content paths (tokens live in styles.css)
 ```
 
 ## Design System
-See `design.md` for the full "High-End Editorial / Modern Archivist" design system.
+See `design.md`. Minimal style inspired by kyusuf.com: Newsreader only, 36rem column, neutral colors.
 
-### Colors (Tailwind tokens)
-- `verdant` → `#0B3D2E` (primary green)
-- `amber` → `#FCB017` (accent gold)
-- `parchment` → `#FAF9F6` (background)
-- `slate` → `#2D3436` (body text)
+### Colors (CSS variables → Tailwind tokens)
+- `bg`, `fg`, `muted`, `line`, defined in `styles/styles.css` with light and dark (`prefers-color-scheme`) values
 
 ### Fonts
-- **Headings:** Noto Serif (Bold/Black)
-- **Body:** Inter / Noto Sans
-- **Accent:** Newsreader (Italic)
+- **Everything:** Newsreader (400/500/600, italic 400)
+- **Code:** Paper Mono (400/500), self-hosted in `public/fonts/paper-mono-v1.000`
 
 ## Commands
 ```bash
