@@ -41,8 +41,8 @@ export function getStaticPaths() {
   };
 }
 
-export function getStaticProps({ params }) {
-  return { props: { post: getPost(params.slug) } };
+export async function getStaticProps({ params }) {
+  return { props: { post: await getPost(params.slug) } };
 }
 
 export default Post;

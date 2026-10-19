@@ -146,6 +146,15 @@ a {
 
 .post pre code { background: none; padding: 0; }
 
+/* Shiki output: token colors come as --shiki-light / --shiki-dark variables. */
+.post pre.shiki,
+.post pre.shiki span { color: var(--shiki-light); }
+
+@media (prefers-color-scheme: dark) {
+  .post pre.shiki,
+  .post pre.shiki span { color: var(--shiki-dark); }
+}
+
 .post img { max-width: 100%; height: auto; border-radius: 6px; }
 
 .post hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
