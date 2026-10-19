@@ -7,7 +7,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta
                         name="description"
-                        content="Gastón Corbalán works and resume"
+                        content="Revenue Manager based in Madrid."
                     />
 
                     <meta
@@ -18,9 +18,9 @@ class MyDocument extends Document {
                     <meta property="og:title" content="Gastón Corbalán" />
                     <meta
                         property="og:description"
-                        content="Gastón Corbalán Portfolio"
+                        content="Revenue Manager based in Madrid."
                     />
-                    <meta property="og:image" content="/opengraph-cover.png" />
+                    <meta property="og:image" content="https://www.gastoncorbalan.com/og.png" />
 
                     <meta name="twitter:card" content="summary_large_image" />
                     <meta
@@ -34,9 +34,9 @@ class MyDocument extends Document {
                     <meta name="twitter:title" content="Gastón Corbalán" />
                     <meta
                         name="twitter:description"
-                        content="Gastón Corbalán Portfolio"
+                        content="Revenue Manager based in Madrid."
                     />
-                    <meta name="twitter:image" content="/opengraph-cover.png" />
+                    <meta name="twitter:image" content="https://www.gastoncorbalan.com/og.png" />
                     <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"

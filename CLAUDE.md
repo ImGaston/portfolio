@@ -25,7 +25,7 @@ styles/
 public/
   images/        → Project screenshots
   favicon.png
-  opengraph-cover.png
+  og.png         → Open Graph image (1200×630)
 tailwind.config.js → Content paths (tokens live in styles.css)
 ```
 
