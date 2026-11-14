@@ -69,8 +69,8 @@ const Home = ({ posts }) => {
       )}
 
       <nav className="flex flex-wrap gap-x-5 gap-y-2 text-muted">
-        <Link href="/fotos" className="hover:text-fg transition-colors">
-          Fotos
+        <Link href="/photos" className="hover:text-fg transition-colors">
+          Photos
         </Link>
         <a
           target="_blank"

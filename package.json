@@ -14,9 +14,9 @@
     "bear:status": "node scripts/bear-agent.mjs status",
     "photos:sync": "node scripts/photos-sync.mjs",
     "photos:publish": "node scripts/photos-sync.mjs --push",
-    "photos:install": "node scripts/bear-agent.mjs install fotos",
-    "photos:uninstall": "node scripts/bear-agent.mjs uninstall fotos",
-    "photos:status": "node scripts/bear-agent.mjs status fotos"
+    "photos:install": "node scripts/bear-agent.mjs install photos",
+    "photos:uninstall": "node scripts/bear-agent.mjs uninstall photos",
+    "photos:status": "node scripts/bear-agent.mjs status photos"
   },
   "keywords": [],
   "author": "",

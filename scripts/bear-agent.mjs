@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Instala, quita o revisa la publicación automática en tu Mac: Bear → blog, o
-// carpeta de fotos → /fotos (con "fotos" como segundo argumento).
+// carpeta de fotos → /photos (con "photos" como segundo argumento).
 //
 //   npm run bear:install     → corre bear:publish cada 5 minutos en segundo plano
 //   npm run bear:status      → muestra si está activo y las últimas líneas del log
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const JOBS = {
   bear: { name: 'bear-sync', script: 'scripts/bear-sync.mjs', what: 'Bear se sincroniza con el blog', cmd: 'bear' },
-  fotos: { name: 'photos-sync', script: 'scripts/photos-sync.mjs', what: 'la carpeta de fotos se sincroniza con /fotos', cmd: 'photos' },
+  photos: { name: 'photos-sync', script: 'scripts/photos-sync.mjs', what: 'la carpeta de fotos se sincroniza con /photos', cmd: 'photos' },
 };
 const JOB = JOBS[process.argv[3] || 'bear'];
 const LABEL = `com.gastoncorbalan.${JOB.name}`;
@@ -126,7 +126,7 @@ function status() {
 const actions = { install, uninstall, status };
 const action = actions[process.argv[2]];
 if (!action) {
-  console.error('Uso: node scripts/bear-agent.mjs install | uninstall | status [bear | fotos]');
+  console.error('Uso: node scripts/bear-agent.mjs install | uninstall | status [bear | photos]');
   process.exit(1);
 }
 action();

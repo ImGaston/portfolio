@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Sincroniza una carpeta de fotos de tu Mac con la sección /fotos del sitio.
+// Sincroniza una carpeta de fotos de tu Mac con la sección /photos del sitio.
 //
 // Uso (en tu Mac, desde la raíz del repo):
 //   node scripts/photos-sync.mjs            → genera/actualiza/borra las fotos, sin tocar git
@@ -7,7 +7,7 @@
 //   node scripts/photos-sync.mjs --dry-run  → solo muestra qué haría
 //
 // Nunca modifica la carpeta de origen ni sube los originales: genera versiones WebP
-// redimensionadas en public/fotos/ (sin EXIF ni GPS) y el índice content/photos.json.
+// redimensionadas en public/photos/ (sin EXIF ni GPS) y el índice content/photos.json.
 
 import { execFileSync } from 'node:child_process';
 import crypto from 'node:crypto';
@@ -19,7 +19,7 @@ import sharp from 'sharp';
 import exifr from 'exifr';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(ROOT, 'public', 'fotos');
+const OUT_DIR = path.join(ROOT, 'public', 'photos');
 const MANIFEST = path.join(ROOT, 'content', 'photos.json');
 const SOURCE = process.env.PHOTOS_DIR || path.join(os.homedir(), 'Pictures', 'gastoncorbalan.com');
 
@@ -245,12 +245,12 @@ async function main() {
     console.log('  git está ocupado; lo intento en la próxima corrida.');
     return;
   }
-  const paths = ['content/photos.json', 'public/fotos'].filter((p) => fs.existsSync(path.join(ROOT, p)));
+  const paths = ['content/photos.json', 'public/photos'].filter((p) => fs.existsSync(path.join(ROOT, p)));
   git('add', '--all', '--', ...paths);
   const staged = run('diff', '--cached', '--name-only');
   if (staged) {
     const summary = changes.length ? changes.join('\n') : 'fotos regeneradas';
-    git('commit', '-q', '-m', `fotos: sincronizar desde la carpeta\n\n${summary}`);
+    git('commit', '-q', '-m', `photos: sincronizar desde la carpeta\n\n${summary}`);
   }
   git('fetch', '-q', 'origin', 'main');
   const ahead = Number(run('rev-list', '--count', 'origin/main..HEAD'));

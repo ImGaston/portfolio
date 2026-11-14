@@ -1,6 +1,6 @@
 # Publicar fotos
 
-Las fotos que pongas en una carpeta de tu Mac aparecen en `gastoncorbalan.com/fotos`.
+Las fotos que pongas en una carpeta de tu Mac aparecen en `gastoncorbalan.com/photos`.
 
 | Hacés | Qué pasa |
 | --- | --- |
@@ -25,7 +25,7 @@ La carpeta se crea sola la primera vez. Sirve exportar desde Lightroom, desde la
 
 `scripts/photos-sync.mjs` corre **en tu Mac** y nunca modifica la carpeta de origen ni sube
 los originales. Por cada foto genera tres versiones WebP (640, 1200 y 1800 px de ancho) en
-`public/fotos/` y guarda los datos en `content/photos.json`. Las versiones publicadas no llevan
+`public/photos/` y guarda los datos en `content/photos.json`. Las versiones publicadas no llevan
 EXIF ni ubicación GPS. Las fotos ya procesadas no se vuelven a procesar.
 
 ## Publicación automática (recomendado)
