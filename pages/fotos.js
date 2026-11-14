@@ -51,7 +51,7 @@ const Fotos = ({ photos }) => {
       <Head>
         <title>Fotos · Gastón Corbalán</title>
       </Head>
-      <header>
+      <header className="site-header">
         <Link href="/" className="font-medium">
           Gastón Corbalán
         </Link>
