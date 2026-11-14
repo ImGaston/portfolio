@@ -114,11 +114,38 @@ function isTagOnlyLine(line) {
   return trimmed.length > 0 && !/^#+\s/.test(trimmed) && trimmed.replace(TAG_RE, '').trim() === '';
 }
 
+// Etiquetas del sitio: una línea "Etiquetas: revenue, pricing" (o "Tags: …") en la nota.
+// No llevan #, así Bear no las toma como etiquetas suyas.
+const SITE_TAGS_RE = /^\s*(?:etiquetas|tags)\s*:\s*(.*)$/i;
+
+function extractSiteTags(lines) {
+  const tags = [];
+  const seen = new Set();
+  let inFence = false;
+  const rest = lines.filter((line) => {
+    if (/^\s*```/.test(line)) inFence = !inFence;
+    const m = !inFence && line.match(SITE_TAGS_RE);
+    if (!m) return true;
+    for (const raw of m[1].split(',')) {
+      const tag = raw.replace(/[*_`]/g, '').trim();
+      const key = slugify(tag);
+      if (!tag || seen.has(key)) continue;
+      seen.add(key);
+      tags.push(tag);
+    }
+    return false;
+  });
+  return { tags, rest };
+}
+
 function convert(note, { slug, titleToSlug }) {
   let lines = (note.text || '').split('\n');
 
   // La primera línea "# Título" ya va al front matter.
   if (lines.length && /^#\s+/.test(lines[0])) lines.shift();
+  // La línea de etiquetas del sitio va al front matter y no se muestra en el post.
+  const { tags, rest } = extractSiteTags(lines);
+  lines = rest;
   // Fuera las líneas que solo tienen etiquetas (#Blog/publicado, #revfactor…).
   lines = lines.filter((l) => !isTagOnlyLine(l));
   let body = lines.join('\n');
@@ -167,7 +194,7 @@ function convert(note, { slug, titleToSlug }) {
 
   body = body.replace(/\u0000(\d+)\u0000/g, (_, i) => code[i]);
 
-  return { body: body.replace(/^\s+/, '').replace(/\s+$/, '') + '\n', copies };
+  return { body: body.replace(/^\s+/, '').replace(/\s+$/, '') + '\n', copies, tags };
 }
 
 function summarize(body) {
@@ -255,12 +282,13 @@ function main() {
 
   const changes = [];
   for (const { note, prev, slug } of plan) {
-    const { body, copies } = convert(note, { slug, titleToSlug });
+    const { body, copies, tags } = convert(note, { slug, titleToSlug });
     const meta = {
       title: (note.title || '').trim(),
       date: prev?.meta.date || new Date().toISOString(),
       updated: toISO(note.modified),
       summary: summarize(body),
+      tags: tags.length ? tags : null,
       bearId: note.id,
     };
     const content = writePost(meta, body);
