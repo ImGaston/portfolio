@@ -26,7 +26,17 @@ const Post = ({ post }) => {
       <div className="space-y-8">
         <div>
           <h1 className="font-medium">{post.title}</h1>
-          <p className="text-muted">{formatDate(post.date)}</p>
+          <p className="text-muted">
+            {formatDate(post.date)}
+            {post.tags.map((tag, i) => (
+              <React.Fragment key={tag.slug}>
+                {i === 0 ? ' · ' : ', '}
+                <Link href={`/blog/etiqueta/${tag.slug}`} className="hover:text-fg transition-colors">
+                  {tag.name}
+                </Link>
+              </React.Fragment>
+            ))}
+          </p>
         </div>
         <article className="post" dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>

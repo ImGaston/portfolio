@@ -8,6 +8,30 @@ Escribís en Bear y las notas con la etiqueta `#blog/publicado` aparecen en `/bl
 | `#blog/publicado` | Se publica en `gastoncorbalan.com/blog/<slug>` |
 | Sacás `#blog/publicado` o mandás la nota a la papelera | Se despublica en la próxima sincronización |
 
+## Etiquetas del sitio
+
+Las `#etiquetas` son de Bear y el sitio no las usa como temas. Para que un post tenga
+etiquetas en la web, escribí en la nota **una línea sin `#`** que empiece con `Etiquetas:`
+(o `Tags:`) y separá las etiquetas con comas:
+
+```
+# Precio dinámico en hoteles
+
+El precio dinámico no es magia…
+
+Etiquetas: Revenue, Pricing
+#blog/publicado
+```
+
+- Puede ir en cualquier lugar de la nota (arriba o abajo); se quita del post publicado.
+- Se muestran tal como las escribís (`Diseño web`), y la URL va sin tildes ni espacios:
+  `/blog/etiqueta/diseno-web`.
+- Mayúsculas y tildes no las duplican: `Revenue` y `revenue` son la misma etiqueta.
+- Dentro de un bloque de código no cuentan.
+- En `/blog` aparece la fila de filtros (Todo, y cada etiqueta, la más usada primero),
+  y en cada post las etiquetas van al lado de la fecha.
+- Si ningún post tiene etiquetas, la fila de filtros no aparece.
+
 ## Cómo funciona
 
 `scripts/bear-sync.mjs` corre **en tu Mac**: abre la base de Bear en solo lectura
@@ -20,6 +44,7 @@ del sitio se encarga del resto.
 - **Slug**: se genera del título la primera vez y después no cambia aunque edites el título.
 - **Fecha**: la del día en que se publicó por primera vez.
 - **Resumen**: el primer párrafo.
+- **Etiquetas**: la línea `Etiquetas: a, b` (ver arriba).
 - Las líneas que son solo etiquetas se quitan; `==resaltado==` se respeta; `[[otra nota]]`
   se convierte en enlace si esa nota también está publicada.
 - Las notas bloqueadas (cifradas) no se publican.
