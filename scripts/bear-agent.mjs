@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-// Instala, quita o revisa la publicación automática Bear → blog en tu Mac.
+// Instala, quita o revisa la publicación automática en tu Mac: Bear → blog, o
+// carpeta de fotos → /photos (con "photos" como segundo argumento).
 //
 //   npm run bear:install     → corre bear:publish cada 5 minutos en segundo plano
 //   npm run bear:status      → muestra si está activo y las últimas líneas del log
 //   npm run bear:uninstall   → lo desactiva
+//   npm run photos:install | photos:status | photos:uninstall → lo mismo para las fotos
 //
 // Usa launchd (el programador de tareas de macOS). Sigue corriendo después de reiniciar.
 
@@ -14,9 +16,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const LABEL = 'com.gastoncorbalan.bear-sync';
+const JOBS = {
+  bear: { name: 'bear-sync', script: 'scripts/bear-sync.mjs', what: 'Bear se sincroniza con el blog', cmd: 'bear' },
+  photos: { name: 'photos-sync', script: 'scripts/photos-sync.mjs', what: 'la carpeta de fotos se sincroniza con /photos', cmd: 'photos' },
+};
+const JOB = JOBS[process.argv[3] || 'bear'];
+const LABEL = `com.gastoncorbalan.${JOB.name}`;
 const PLIST = path.join(os.homedir(), 'Library/LaunchAgents', `${LABEL}.plist`);
-const LOG = path.join(os.homedir(), 'Library/Logs/bear-sync.log');
+const LOG = path.join(os.homedir(), `Library/Logs/${JOB.name}.log`);
 const INTERVAL = Number(process.env.BEAR_SYNC_INTERVAL || 300);
 const DOMAIN = `gui/${process.getuid()}`;
 
@@ -43,7 +50,7 @@ function install() {
   <array>
     <string>${xml(process.execPath)}</string>
     <string>--no-warnings</string>
-    <string>scripts/bear-sync.mjs</string>
+    <string>${JOB.script}</string>
     <string>--push</string>
   </array>
   <key>WorkingDirectory</key>
@@ -51,7 +58,11 @@ function install() {
   <key>EnvironmentVariables</key>
   <dict>
     <key>PATH</key>
-    <string>${xml(process.env.PATH || '/usr/bin:/bin')}</string>
+    <string>${xml(process.env.PATH || '/usr/bin:/bin')}</string>${
+      process.env.PHOTOS_DIR
+        ? `\n    <key>PHOTOS_DIR</key>\n    <string>${xml(process.env.PHOTOS_DIR)}</string>`
+        : ''
+    }
   </dict>
   <key>StartInterval</key>
   <integer>${INTERVAL}</integer>
@@ -72,7 +83,14 @@ function install() {
     console.error(`No pude activar el agente. Probá a mano:\n  launchctl bootstrap ${DOMAIN} ${PLIST}`);
     process.exit(1);
   }
-  console.log(`Listo: Bear se sincroniza con el blog cada ${Math.round(INTERVAL / 60)} minutos.
+  if (JOB.cmd === 'photos') {
+    console.log(`Listo: ${JOB.what} cada ${Math.round(INTERVAL / 60)} minutos.
+
+Para revisar que funciona:  npm run photos:status
+Log completo:               ${LOG}`);
+    return;
+  }
+  console.log(`Listo: ${JOB.what} cada ${Math.round(INTERVAL / 60)} minutos.
 
 Último paso (una sola vez): dale "Acceso total al disco" a node para que pueda leer Bear
 en segundo plano.
@@ -94,7 +112,7 @@ function uninstall() {
 function status() {
   const info = launchctl('print', `${DOMAIN}/${LABEL}`);
   if (!info) {
-    console.log('No está activo. Instalalo con: npm run bear:install');
+    console.log(`No está activo. Instalalo con: npm run ${JOB.cmd}:install`);
   } else {
     const field = (name) => info.match(new RegExp(`\\n\\s*${name} = (.*)`))?.[1] ?? '?';
     console.log(`Activo. Corre cada ${field('run interval')}; última salida: ${field('last exit code')}.`);
@@ -108,7 +126,7 @@ function status() {
 const actions = { install, uninstall, status };
 const action = actions[process.argv[2]];
 if (!action) {
-  console.error('Uso: node scripts/bear-agent.mjs install | uninstall | status');
+  console.error('Uso: node scripts/bear-agent.mjs install | uninstall | status [bear | photos]');
   process.exit(1);
 }
 action();

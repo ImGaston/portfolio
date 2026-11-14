@@ -11,7 +11,12 @@
     "bear:publish": "node --no-warnings scripts/bear-sync.mjs --push",
     "bear:install": "node scripts/bear-agent.mjs install",
     "bear:uninstall": "node scripts/bear-agent.mjs uninstall",
-    "bear:status": "node scripts/bear-agent.mjs status"
+    "bear:status": "node scripts/bear-agent.mjs status",
+    "photos:sync": "node scripts/photos-sync.mjs",
+    "photos:publish": "node scripts/photos-sync.mjs --push",
+    "photos:install": "node scripts/bear-agent.mjs install photos",
+    "photos:uninstall": "node scripts/bear-agent.mjs uninstall photos",
+    "photos:status": "node scripts/bear-agent.mjs status photos"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +36,9 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "autoprefixer": "^10.4.22",
+    "exifr": "^7.1.3",
     "postcss": "^8.5.6",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.1.17"
   }
 }

@@ -25,3 +25,6 @@ Dark mode follows the system (`prefers-color-scheme`).
 
 ## Blog posts
 Post HTML from Bear is styled under `.post` in `styles/styles.css`: muted yellow highlights (`--highlight`), muted blockquotes with a thin rule, tinted code blocks with build-time Shiki highlighting (`vitesse-light` / `vitesse-dark`, set in `lib/posts.js`), hairline tables, footnotes in muted small text.
+
+## Photos (`/photos`)
+One photo per row at full column width, 6px radius (same as post images), `space-y-14` between photos. Caption below: title left and date right (like the post list), then camera and settings in small muted text. While a photo loads, its box shows the photo's dominant color. No lightbox, grid or hover effects.

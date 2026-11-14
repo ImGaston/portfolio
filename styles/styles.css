@@ -184,3 +184,7 @@ samp {
 .post .footnotes { font-size: 0.875em; color: var(--muted); margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .post .footnotes h2 { font-size: 1em; margin-top: 0; }
 .post sup a { text-decoration: none; }
+
+/* Photos (/photos): full column width, same radius as post images. The background
+   is the photo's dominant color, shown only while it loads. */
+.photo { display: block; width: 100%; height: auto; border-radius: 6px; }
