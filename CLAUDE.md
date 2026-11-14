@@ -16,7 +16,8 @@ pages/
   _app.js        → Global layout, favicon, title
   _document.js   → SEO meta tags, Google Fonts
   index.js       → Single-page portfolio (hero, links)
-  blog/          → Blog index and posts (from content/posts)
+  blog/          → Blog index, posts and tag pages (etiqueta/[tag]) from content/posts
+components/      → BlogIndex (tag filter + post list, shared by /blog and tag pages)
 content/posts/   → Markdown posts generated from Bear by scripts/bear-sync.mjs
 lib/             → Post loading (posts.js) and date formatting (format.js)
 scripts/         → Bear → blog sync script + launchd installer (see docs/bear-blog.md)
