@@ -82,6 +82,14 @@ a {
   text-decoration: none;
 }
 
+/* Site header: the name is the one larger line on every page, so it sits
+   above the content. On posts the "/ Blog" breadcrumb shares its size. */
+.site-header {
+  font-size: 1.5em;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
 /* Inline links: quiet underline that darkens on hover. */
 .link,
 .post a {

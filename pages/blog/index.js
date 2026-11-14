@@ -10,7 +10,7 @@ const Blog = ({ posts }) => {
       <Head>
         <title>Blog · Gastón Corbalán</title>
       </Head>
-      <header>
+      <header className="site-header">
         <Link href="/" className="font-medium">
           Gastón Corbalán
         </Link>

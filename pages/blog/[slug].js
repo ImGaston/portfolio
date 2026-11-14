@@ -14,7 +14,7 @@ const Post = ({ post }) => {
         {post.summary && <meta property="og:description" content={post.summary} />}
         <meta property="og:type" content="article" />
       </Head>
-      <header>
+      <header className="site-header">
         <Link href="/" className="font-medium">
           Gastón Corbalán
         </Link>
