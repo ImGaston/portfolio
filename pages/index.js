@@ -6,7 +6,7 @@ import { formatShortDate } from '../lib/format';
 const Home = ({ posts }) => {
   return (
     <main className="py-16 md:py-28 space-y-14">
-      <header>
+      <header className="site-header">
         <Link href="/" className="font-medium">
           Gastón Corbalán
         </Link>
